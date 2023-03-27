@@ -25,3 +25,27 @@ function question() {
   });
 }
 question();
+const viewDepartments = () => {
+  db.query("SELECT * FROM department", function (err, results) {
+    console.table(results);
+    question();
+  });
+};
+
+const viewRoles = () => {
+  db.query(
+    'SELECT * FROM roles JOIN department ON roles.department_id = department.i',
+    function (err, results) {
+      console.table(results);
+      question();
+    }
+  );
+};
+const viewEmployees = () => {
+  db.query( "SELECT * FROM employee JOIN roles ON employee.role_id = roles.id JOIN department ON roles.department_id = department.id;",
+    function (err, results) {
+      console.table(results);
+      question();
+    }
+  );
+};
