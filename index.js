@@ -79,8 +79,8 @@ const newRole = () => {
     },
     { type: 'list',
       name: 'department',
-      message: 'What departmet is this role in?',
-      choices: ['Engineering', 'Project Managment'],
+      message: '1:Engineering or 2:Project Management',
+      choices: ['1','2'],
     },
   ];
   inquirer.prompt(role).then((userA) => {
@@ -109,8 +109,8 @@ const newEmployee = () => {
     },
     { type: 'list',
       name: 'role_Id',
-      message:'What role is your new employee taking on?',
-      choices: ['Senior Dev', 'Junior Dev', 'UX/UI Designer', 'IT',],
+      message:'1:Senior Dev 2:Junior Dev 3:UX/UI Designer 4:IT',
+      choices: ['1', '2', '3', '4',],
     },
     { type: 'list',
       name: 'manager_Id',
