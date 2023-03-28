@@ -6,7 +6,7 @@ const db = mysql.createConnection({
   password: '',
   database: 'employee_db',
 });
-const userQ = [{
+const userQ = [{//creates question list that appears when application is started
   type: 'list',
   name: 'startQ',
   message: 'How would you like to proceed?',
@@ -25,27 +25,27 @@ function question() {
   });
 }
 question();
-const viewDepartments = () => {
+const viewDepartments = () => {//pulls department info
   db.query("SELECT * FROM department", function (err, results) {
     console.table(results);
     question();
   });
 };
-const viewRoles = () => {
+const viewRoles = () => {//pulls role info
   db.query('SELECT * FROM roles JOIN department ON roles.department_id = department.id;',
     function (err, results) {
       console.table(results);
       question();
     });
   };
-const viewEmployees = () => {
+const viewEmployees = () => {//pulls employee info
   db.query( "SELECT * FROM employee JOIN roles ON employee.role_id = roles.id JOIN department ON roles.department_id = department.id;",
     function (err, results) {
       console.table(results);
       question();
     });
 };
-const newDepartment = () => {
+const newDepartment = () => {//creates new department
   department = [
     { type: 'input',
       name: 'departrment',
@@ -67,8 +67,8 @@ const newDepartment = () => {
     });
   });
 };
-const newRole = () => {
-  role = [
+const newRole = () => {//creates new role
+  role = [//role specifics
     { type: 'input',
       name: "role",
       message: 'What role would you like to add?',
@@ -97,8 +97,8 @@ const newRole = () => {
     });
   });
 };
-const newEmployee = () => {
-  employee = [
+const newEmployee = () => {//creates new employee
+  employee = [//employee specifics
     { type: 'input',
       name: 'firstName',
       message: 'New employees first name?',
